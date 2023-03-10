@@ -19,9 +19,9 @@ services:
       - ./:/var/www/html:delegated
     depends_on:
       - php
-      - redis
+      # - redis
       - mysql
-      - mailhog
+      # - mailhog
     networks:
       - laravel
 
@@ -56,14 +56,14 @@ services:
     networks:
       - laravel
 
-  redis:
-    image: redis:alpine
-    container_name: redis
-    restart: unless-stopped
-    ports:
-      - 6379:6379
-    networks:
-      - laravel
+  # redis:
+  #   image: redis:alpine
+  #   container_name: redis
+  #   restart: unless-stopped
+  #   ports:
+  #     - 6379:6379
+  #   networks:
+  #     - laravel
 
   composer:
     build:
@@ -84,18 +84,18 @@ services:
     networks:
       - laravel
 
-  npm:
-    image: node:13.7
-    container_name: npm
-    volumes:
-      - ./:/var/www/html
-    ports:
-      - 3000:3000
-      - 3001:3001
-    working_dir: /var/www/html
-    entrypoint: ['npm']
-    networks:
-      - laravel
+  # npm:
+  #   image: node:13.7
+  #   container_name: npm
+  #   volumes:
+  #     - ./:/var/www/html
+  #   ports:
+  #     - 3000:3000
+  #     - 3001:3001
+  #   working_dir: /var/www/html
+  #   entrypoint: ['npm']
+  #   networks:
+  #     - laravel
 
   artisan:
     build:
@@ -115,11 +115,11 @@ services:
     networks:
       - laravel
 
-  mailhog:
-    image: mailhog/mailhog:latest
-    container_name: mailhog
-    ports:
-      - 1025:1025
-      - 8025:8025
-    networks:
-      - laravel
+  # mailhog:
+  #   image: mailhog/mailhog:latest
+  #   container_name: mailhog
+  #   ports:
+  #     - 1025:1025
+  #     - 8025:8025
+  #   networks:
+  #     - laravel
