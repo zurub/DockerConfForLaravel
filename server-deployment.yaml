@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nostro-server
+  labels:
+    server: web
+spec:
+  selector:
+   matchLabels:
+     server: web
+  template:
+    metadata:
+     labels:
+       server: web
+    spec:
+      containers:
+      - name: server-web
+        image: nginx
